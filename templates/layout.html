@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', path='/regentcollege/css/base.css')}}">
+         <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', path='/regentcollege/css/bootstrap.css')}}">
+    <meta charset="UTF-8">
+    <img class="w-24 lg:w-36 md:w-36" src="https://www.rcl.ac.uk/app/themes/rcl/public/images/logo.90d7ec.svg" alt="Regent College London logo" width="144" height="67">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RegentCollegeHR </title>
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+{% block content  %}
+
+
+{% endblock %}
+
+<script src="{{ url_for('static', path='/regentcollege/js/jquery-slim.js')}}"></script>
+<script src="{{ url_for('static', path='/regentcollege/js/popper.js')}}"></script>
+<script src="{{ url_for('static', path='/regentcollege/js/bootstrap.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Add a new Details
+        </div>
+        <div class="card-body">
+            <form id="entityForm">
+                <div class="form-group">
+                    <label>Entity Type</label>
+                    <select id="entityType" class="form-control">
+                        <option value="employee">Employee</option>
+                        <option value="home-student">HomeStudent</option>
+                        <option value="international-student">InternationalStudent</option>
+                        <option value="student-credit">StudentCredit</option>
+                        <option value="student-dbs">StudentDBS</option>
+                        <option value="employee-bank-detail">EmployeeBankDetails</option>
+                        <option value="employee-dbs">EmployeeDBS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" class="form-control" name="dob" required>
+                </div>
+
+
+                <div id="employeeFields" class="additional-fields" hidden>
+                    <div class="form-group">
+                        <label>EmployeeID</label>
+                        <label>FirstName</label>
+                        <label>LastName</label>
+                        <label>DateOfBirth</label>
+                        <label>Address</label>
+                        <label>PhoneNumber</label>
+                        <label>Email</label>
+                        <label>Department</label>
+                        <label>Position</label>
+                        <label>HireDate</label>
+                        <label>Salary</label>
+                        <input type="text" class="form-control" name="employeeField">
+                    </div>
+                </div>
+
+                <div id="internationalStudentFields" class="additional-fields" hidden>
+                    <div class="form-group">
+                         <label>StudentID</label>
+                        <label>FirstName</label>
+                        <label>LastName</label>
+                        <label>DateOfBirth</label>
+                        <label>HomeAddress</label>
+                        <label>PhoneNumber</label>
+                        <label>HomeCountry</label>
+                        <label>PassportNumber</label>
+                        <label>VisaStatus</label>
+                        <input type="text" class="form-control" name="internationalStudentField">
+                    </div>
+                </div>
+
+                <div id="homeStudentFields" class="additional-fields" hidden>
+                    <div class="form-group">
+                         <label>StudentID</label>
+                        <label>FirstName</label>
+                        <label>LastName</label>
+                        <label>DateOfBirth</label>
+                        <label>HomeAddress</label>
+                        <label>PhoneNumber</label>
+                        <label>HomeCountry</label>
+
+                        <input type="text" class="form-control" name="homeStudentField">
+                    </div>
+                </div>
+
+                <div id="studentCreditFields" class="additional-fields" hidden>
+                    <div class="form-group">
+                         <label>StudentID</label>
+                        <label>BankAccountNumber</label>
+                        <label>CurrentCredits</label>
+                        <input type="text" class="form-control" name="studentCreditField">
+                    </div>
+                </div>
+
+                <div id="studentDBSFields" class="additional-fields" hidden>
+                    <div class="form-group">
+                         <label>StudentID</label>
+                        <label>FirstName</label>
+                        <label>LastName</label>
+                        <label>DateOfBirth</label>
+                        <label>Gender</label>
+                        <label>PhoneNumber</label>
+                        <label>Email</label>
+                        <label>Address</label>
+                        <label>dbsStatus</label>
+                        <label>dbsExpiryDate</label>
+                        <input type="text" class="form-control" name="studentDBSField">
+                    </div>
+                </div>
+
+                <div id="employeeDBSFields" class="additional-fields" hidden>
+                    <div class="form-group">
+                        <label>EmployeeID</label>
+                        <label>FirstName</label>
+                        <label>LastName</label>
+                        <label>DateOfBirth</label>
+                        <label>Gender</label>
+                        <label>Address</label>
+                        <label>PhoneNumber</label>
+                        <label>Email</label>
+                        <label>dbsStatus</label>
+                        <label>Position</label>
+                        <label>dbsExpiryDate</label>
+                        <input type="text" class="form-control" name="employeeDBSField">
+                    </div>
+                </div>
+
+                <div id="employeeBankDetailFields" class="additional-fields" hidden>
+                    <div class="form-group">
+                        <label>EmployeeID</label>
+                        <label>BankName</label>
+                        <label>AccountHolderName</label>
+                        <label>AccountNumber</label>
+                        <label>SortCode</label>
+                        <label>IBAN</label>
+                        <label>BIC_SwiftCode</label>
+                        <input type="text" class="form-control" name="employeeBankDetailField">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add new Details</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#entityType').change(function () {
+            var entityType = $(this).val();
+            updateAdditionalFields(entityType);
+        });
+
+        function updateAdditionalFields(entityType) {
+            // Hide all additional fields
+            $('.additional-fields').hide();
+
+            // Show additional fields based on the selected entity type
+            if (entityType === 'employee') {
+                $('#employeeFields').show();
+            } else if (entityType === 'home-student') {
+                $('#homeStudentFields').show();
+            } else if (entityType === 'international-student') {
+                $('#internationalStudentFields').show();
+            } else if (entityType === 'student-dbs') {
+                $('#studentDBSFields').show();
+            } else if (entityType === 'student-credit') {
+                $('#studentCreditFields').show();
+            } else if (entityType === 'employee-bank-details') {
+                $('#employeeBankDetailFields').show();
+            } else if (entityType === 'employee-dbs') {
+                $('#employeeDBSFields').show();
+            }
+        }
+    });
+</script>
